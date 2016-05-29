@@ -1,0 +1,11 @@
+__author__ = 'D059348'
+
+from abc import ABCMeta, abstractmethod
+
+class AbstractMutator:
+
+    __metaclass__ = ABCMeta
+
+    @abstractmethod
+    def mutate(self, population):
+        pass
