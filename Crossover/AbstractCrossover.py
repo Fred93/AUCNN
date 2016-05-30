@@ -1,5 +1,3 @@
-__author__ = 'D059348'
-
 from abc import ABCMeta, abstractmethod
 
 class AbstractCrossover():

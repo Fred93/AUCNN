@@ -1,5 +1,3 @@
-__author__ = 'D059348'
-
 import Selector.NaiveSelector
 import Mutator.NaiveMutator
 import Crossover.NaiveCrossover
