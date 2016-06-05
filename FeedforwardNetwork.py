@@ -1,5 +1,3 @@
-__author__ = 'D059348'
-
 import numpy as np
 from scipy.special import expit
 
