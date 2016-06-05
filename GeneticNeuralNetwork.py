@@ -1,41 +1,52 @@
 import Selector.NaiveSelector
 import Mutator.NaiveMutator
 import Crossover.NaiveCrossover
-import Population
+import Chromosome
 import TargetFunction
+
+import numpy as np
+import random
 
 class GeneticNeuralNetwork():
 
-    amountGenerations = 100000
-    generationSize = 1000
+
     selector = Selector.NaiveSelector.NaiveSelector()
     mutator = Mutator.NaiveMutator.NaiveMutator()
     crossover = Crossover.NaiveCrossover.NaiveCrossover()
 
-    def initializeGeneration(self):
-        generation = []
-        for i in range(self.generationSize):
-            population = Population()
-            population.initialize()
-            generation.append(population)
-        return generation
+    #Parameters
+    amountGenerations = 500
+    populationSize = 200
+
+    mutationRate = 0.01
+    mutationRange = (-0.2, 0.2)
+    crossoverRate = 0.25
+
+    def initializePopulation(self):
+        population = np.array([])
+        for i in range(self.populationSize):
+            chromosome = Chromosome()
+            chromosome.initialize()
+            population = np.append(population, chromosome)
+        return population
 
     def trainNeuralNetwork(self, trainingset):
         #TODO: implement more sophisticated stop condition
-        generation = self.initializeGeneration()
+        population = self.initializePopulation()
         for i in range(self.amountGenerations):
-            generation = self.processGeneration(generation, trainingset)
+            population = self.processPopulation(population, trainingset)
 
-    def processGeneration(self, generation, trainingset):
-        survivors = self.selector.select(generation, trainingset)
+    def processPopulation(self, population, trainingset):
+        newPopulation = self.selector.select(population, trainingset)
 
-        #TODO: Clever Mutation Candidate selection (Random??)
-        mutatedPopulation = self.mutator.mutate(survivors[0])
+        crossoverIndices = random.sample(range(0, population.size), population.size*self.crossoverRate)
+        newPopulation[crossoverIndices] = self.crossover.crossover(newPopulation[crossoverIndices])
 
-        #TODO: Clever Crossover candidate selection (Random??)
-        crossoveredPopulation = self.crossover.crossover(survivors[0], survivors[1])
+        mutatedPopulation = self.mutator.mutate(newPopulation, self.mutationRate, self.mutationRange)
 
-        return mutatedPopulation + crossoveredPopulation
+        return mutatedPopulation
+
+
 
     def calculateNetworkOutput(self, population, data):
             return 1

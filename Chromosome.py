@@ -1,6 +1,6 @@
 import numpy as np
 
-class Population:
+class Chromosome:
 
     #TODO: use correct numbers
     amountInputUnits = 3

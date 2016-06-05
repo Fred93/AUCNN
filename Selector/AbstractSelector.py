@@ -4,5 +4,5 @@ class AbstractSelector():
     __metaclass__ = ABCMeta
 
     @abstractmethod
-    def select(self, generation, trainingset):
+    def select(self, population, trainingset):
         pass

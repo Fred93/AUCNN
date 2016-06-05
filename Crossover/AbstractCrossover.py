@@ -5,5 +5,5 @@ class AbstractCrossover():
     __metaclass__ = ABCMeta
 
     @abstractmethod
-    def crossover(self, population1, population2):
+    def crossover(self, population):
         pass
