@@ -1,5 +1,3 @@
-__author__ = 'D059348'
-
 import AbstractCrossover
 
 class NaiveCrossover(AbstractCrossover.AbstractCrossover):

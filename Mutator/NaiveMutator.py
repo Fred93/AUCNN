@@ -1,5 +1,3 @@
-__author__ = 'D059348'
-
 import AbstractMutator
 
 class NaiveMutator(AbstractMutator.AbstractMutator):
