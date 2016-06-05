@@ -44,3 +44,7 @@ class AbstractSelector():
 
         
         
+=======
+    def select(self, population, trainingset):
+        pass
+>>>>>>> 2f0df9248763f9faaaf0a5f1e8f49bab2a3658a0
