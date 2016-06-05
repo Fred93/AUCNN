@@ -1,5 +1,3 @@
-__author__ = 'D059348'
-
 import numpy as np
 import pandas as pd
 
@@ -14,7 +12,12 @@ class Population:
     secondLevelMatrix = pd.DataFrame()
 
     def initialize(self):
-        #TODO: values are just normal distributed
-        self.firstLevelMatrix = pd.DataFrame(np.random.randn(self.amountInputUnits, self.amountHiddenUnits))
-        self.secondLevelMatrix = pd.DataFrame(np.random.randn(self.amountHiddenUnits, self.amountOutputUnits))
-
+        # Updated U(0,1) Matrices (do we really need pd.DataFrames?)
+        self.firstLevelMatrix = pd.DataFrame(
+        np.round(1*np.random.random_sample((self.amountInputUnits,self.amountHiddenUnits)),2)
+                                            )
+                                            
+        self.secondLevelMatrix = pd.DataFrame(
+        np.round(1*np.random.random_sample((self.amountHiddenUnits,self.amountOutputUnits)),2)
+                                             )
+        
