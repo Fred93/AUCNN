@@ -15,15 +15,15 @@ class AbstractSelector():
     
     Inputs:
     ---------
-    generation - a numpy array, where generation[i] puts out i-th solution
+    population - a numpy array, where population[i] puts out i-th solution
     fitness - a numpy array of all n fitness values for each solution
-    elitsm - a boolean indicating wether an elitism strategy is performed     
+    perform_elitsm - a boolean indicating wether an elitism strategy is performed     
     elitism_rate - a float between 0 and 1 indicating which fraction of the 
                    solutions shoulb be save
  
     """
     @abstractmethod
-    def select(self, generation, fitness, elitism = False, elitisim_rate=0.1):
+    def select(self, population, fitness, perform_elitism = False, elitisim_rate=0.1):
         pass
     
     """
@@ -32,19 +32,14 @@ class AbstractSelector():
     
     Inputs: 
     ---------
-    same as in select but without the boolean elitism
+    same as in select() but without the boolean perform_elitism
     ---------
-    Output: an one dimensional np.array containing the 10% best solution
+    Output: an one dimensional np.array containing the indices of the 10% best solution
     """
     
-    def elitism(self, generation, fitness, eltism_rate=0.1):
+    def elitism(self, population, fitness, eltism_rate=0.1):
         n = int(len(fitness) * eltism_rate)
-        nlargest_idx = np.argpartition(fitness,-n)[-n:]
-        return generation[nlargest_idx]
-
+        return np.argpartition(fitness,-n)[-n:]
+    
+ 
         
-        
-=======
-    def select(self, population, trainingset):
-        pass
->>>>>>> 2f0df9248763f9faaaf0a5f1e8f49bab2a3658a0
