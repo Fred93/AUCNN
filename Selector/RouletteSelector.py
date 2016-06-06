@@ -4,19 +4,15 @@ import numpy as np
 import AbstractSelector
 
 class RouletteSelector(AbstractSelector.AbstractSelector):
-    selector = Selector.NaiveSelector.NaiveSelector()
-    elitism.AbstractSelector.elitism(generation, fitness, elitism_rate)
     """
     This Class implements the Roulette Wheel Selector 
-    
-    Question: How to call elitsm from the AbstractSelector properly
     """    
     
     def __init__(self):
         pass
     
 
-    def select(self, generation, fitness, perform_elitism = False, elitism_rate = 0.1):
+    def select(self, population, fitness, perform_elitism = False, elitism_rate = 0.1):
         # compute total fitness
         total_fitness = float(sum(fitness))
         # compute relative fitness value
@@ -26,23 +22,20 @@ class RouletteSelector(AbstractSelector.AbstractSelector):
     
         # define number of solutions to be selected
         num = len(fitness)
-        new_generation = np.array([])
+        # empty array for index of the selected solution
+        new_population_idx = np.array([])
         # if elitism strategy is used call eltitsm() and reduce number of iteration accodingly
         if perform_elitism is True:
-            new_generation = AbstractSelector.elitism(generation, fitness, elitism_rate)  # Bug
+            new_population_idx = elitism(population, fitness, elitism_rate)  
             num -= int(len(fitness) * elitism_rate)
     
-        # Update generation
+        # Select indices of solution in the population using roulette wheel selection
         for n in xrange(num):
             r = rand.random()
-            for (i, individual) in enumerate(generation):
+            for (i, individual) in enumerate(population):
                 if r <= probs[i]:
-                    new_generation = np.append(new_generation,individual)
+                    new_population_idx = np.append(new_population_idx,individual)
                     break
-        return new_generation.astype(int)
-    
-    
-    
-    
-    
-
+                
+        # return selected items from the population        
+        return population[new_population_idx.astype(int)]
