@@ -9,7 +9,7 @@ class PointCrossover(AbstractCrossover.AbstractCrossover):
         pass
 
 
-    def pointcrossover(self, list):'Annamhme: list ist ein array mit einem array mit weights von A nach B oder B nach C'
+    def crossover(self, list):'Annamhme: list ist ein array mit einem array mit weights von A nach B oder B nach C'
 
         i = 0
 

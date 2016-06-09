@@ -4,25 +4,34 @@ rand.seed(None)
 import AbstractCrossover
 import numpy as np
 
+
+def exchangerow(newPopulation, i, randompoint): #function to crossover rows of chromosomes
+
+    #crossover for first level matrix (input to hidden layer)
+    zwischenspeicher = np.matrix(newPopulation[i][0][0:randompoint, :])
+    newPopulation[i][0][0:randompoint, :] = newPopulation[i + 1][0][0:randompoint, :]
+    newPopulation[i + 1][0][0:randompoint, :] = zwischenspeicher
+
+    #crossover for second level matrix (hidden to output layer)
+    zwischenspeicher = np.matrix(newPopulation[i][1][0:randompoint, :])
+    newPopulation[i][1][0:randompoint, :] = newPopulation[i + 1][1][0:randompoint, :]
+    newPopulation[i + 1][1][0:randompoint, :] = zwischenspeicher
+
+
 class ColumCrossover(AbstractCrossover.AbstractCrossover):
 
     def __init__(self):
         pass
 
-    def ColumCrossover(self, e): 'Annamhme: e ist ein array mit Matrizen von A nach B oder B nach C'
+    def crossover(self, newPopulation):
 
         i = 0
 
-        while i < (e[0].shape[0] - 1):  # -1 um bei ungeraden row matrizen die letzte Einheit stehen zu lassen
+        while i < (len(newPopulation) - 1):  # -1 um bei ungeraden row matrizen die letzte Einheit stehen zu lassen
 
-            randompoint = rand.randint(0, e[i].shape[0])
-            print(randompoint)
+            randompoint = rand.randint(0, newPopulation[i][0].shape[0]) #creates for each pair of chromosomes a new random number, also be possible to be 0
+            exchangerow(newPopulation, i, randompoint) #calls exchangerow function to crossover the first level matrix and second level matrix of a cromosome pair
+            i = i + 2 #jumps to the next pair
 
-            zwischenspeicher = np.matrix(e[i][0:randompoint, :])
-            e[i][0:randompoint, :] = e[i + 1][0:randompoint, :]
-            e[i + 1][0:randompoint, :] = zwischenspeicher
-
-            i = i + 2
-
-        return e
-        print('Da Rowcroshi isch au durch, gel')
+        return newPopulation #after all chromosome pairs are crossovered, the function returns the newPopulation
+        print('Da Rowcroshi isch au durch, gel') #and is printing an over message

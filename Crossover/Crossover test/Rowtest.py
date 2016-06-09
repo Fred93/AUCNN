@@ -7,28 +7,42 @@ import numpy as np
 
 a = np.matrix([[1, 2, 3], [4, 5, 6]])
 b = np.matrix([[7, 8, 9], [10, 11, 12]])
+
 c = np.matrix([[13,14,15],[16,17,18]])
-e = [a, b, c]
+d = np.matrix([[19,20,21], [22,23,24]])
 
-# print(e[0][:,0]) #gib mir die 0te column
-# print(e[0][:,1:2]) # gib mir die 1ste column
+y = np.matrix([[25,26,27],[28,29,30]])
+z = np.matrix([[31,32,33],[34,35,36]])
 
-# print(e[0].shape[1])# gibt mir die Anzahl der Columns wieder von a
+e = [a, b]
+f = [c, d]
+x = [y, z]
+
+l = [e, f, z]
+
+
+def exchangerow(l, i, randompoint):
+
+    zwischenspeicher = np.matrix(l[i][0][0:randompoint, :])
+    l[i][0][0:randompoint, :] = l[i + 1][0][0:randompoint, :]
+    l[i + 1][0][0:randompoint, :] = zwischenspeicher
+
+    zwischenspeicher = np.matrix(l[i][1][0:randompoint, :])
+    l[i][1][0:randompoint, :] = l[i + 1][1][0:randompoint, :]
+    l[i + 1][1][0:randompoint, :] = zwischenspeicher
 
 
 i = 0
+while i < (len(l) - 1):  # -1 um bei ungeraden row matrizen die letzte Einheit stehen zu lassen
 
-while i < (e[0].shape[0] - 1):  # -1 um bei ungeraden row matrizen die letzte Einheit stehen zu lassen
-
-    randompoint = rand.randint(0, e[i].shape[0])
+    randompoint = rand.randint(0, l[i][0].shape[0])
     print(randompoint)
 
-    zwischenspeicher = np.matrix(e[i][0:randompoint,:])
-    e[i][0:randompoint,:] = e[i + 1][0:randompoint,:]
-    e[i + 1][0:randompoint,:] = zwischenspeicher
+    exchangerow(l, i, randompoint)
 
     i = i + 2
 
-print(e[0])
-print(e[1])
-print(e[2])
+
+print(l)
+
+

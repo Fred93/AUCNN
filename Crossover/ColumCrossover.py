@@ -11,7 +11,7 @@ class ColumCrossover(AbstractCrossover.AbstractCrossover): 'Tauscht die Gewichte
         pass
 
 
-    def ColumCrossover(self, e):'Annamhme: e ist ein array mit Matrizen von A nach B oder B nach C'
+    def crossover(self, e):'Annamhme: e ist ein array mit Matrizen von A nach B oder B nach C'
 
         i = 0
 
