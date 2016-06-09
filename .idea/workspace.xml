@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="82e3acd3-a963-453d-b780-a1e89c0e3ff1" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Crossover/Crossover test/Pointtest.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Crossover/Crossover test/test.py" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Crossover/ColumCrossover.py" afterPath="$PROJECT_DIR$/Crossover/ColumCrossover.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Crossover/PointCrossover.py" afterPath="$PROJECT_DIR$/Crossover/PointCrossover.py" />
@@ -46,21 +48,51 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ColumCrossover.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Crossover/ColumCrossover.py">
+      <file leaf-file-name="RowCrossover.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Crossover/RowCrossover.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="630">
-              <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+            <state relative-caret-position="155">
+              <caret line="19" column="24" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RowCrossover.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Crossover/RowCrossover.py">
+      <file leaf-file-name="ColumCrossover.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Crossover/ColumCrossover.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="335">
-              <caret line="29" column="46" selection-start-line="29" selection-start-column="46" selection-end-line="29" selection-end-column="107" />
+            <state relative-caret-position="305">
+              <caret line="33" column="12" selection-start-line="33" selection-start-column="12" selection-end-line="33" selection-end-column="12" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PointCrossover.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Crossover/PointCrossover.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="795">
+              <caret line="53" column="12" selection-start-line="53" selection-start-column="12" selection-end-line="53" selection-end-column="12" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Pointtest.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Crossover/Crossover test/Pointtest.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="215">
+              <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="60" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Rowtest.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Crossover/Crossover test/Rowtest.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="45" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -99,11 +131,12 @@
         <option value="$PROJECT_DIR$/Crossover/Coltest.py" />
         <option value="$PROJECT_DIR$/Crossover/NaiveCrossover.py" />
         <option value="$PROJECT_DIR$/Crossover/Rowtest.py" />
-        <option value="$PROJECT_DIR$/Crossover/PointCrossover.py" />
         <option value="$PROJECT_DIR$/GeneticNeuralNetwork.py" />
         <option value="$PROJECT_DIR$/Crossover/Crossover test/Rowtest.py" />
         <option value="$PROJECT_DIR$/Crossover/RowCrossover.py" />
         <option value="$PROJECT_DIR$/Crossover/ColumCrossover.py" />
+        <option value="$PROJECT_DIR$/Crossover/Crossover test/Pointtest.py" />
+        <option value="$PROJECT_DIR$/Crossover/PointCrossover.py" />
       </list>
     </option>
   </component>
@@ -249,10 +282,11 @@
       <recent name="$PROJECT_DIR$/Crossover/Crossover test" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Crossover/Crossover test" />
       <recent name="$PROJECT_DIR$/Crossover" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.Rowtest">
+  <component name="RunManager" selected="Python.Pointtest">
     <configuration default="false" name="Test" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -317,23 +351,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="AUCNN" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Crossover/Crossover test/Coltest.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Rowtest" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Crossover" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="AUCNN" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Crossover/Crossover test/Rowtest.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -472,6 +489,40 @@
       <option name="USE_KEYWORD" value="false" />
       <method />
     </configuration>
+    <configuration default="false" name="Pointtest" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Crossover/Crossover test" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="AUCNN" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Crossover/Crossover test/Pointtest.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Rowtest" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Crossover" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="AUCNN" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Crossover/Crossover test/Rowtest.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
     <configuration default="false" name="MainScript" type="PythonConfigurationType" factoryName="Python">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -489,21 +540,21 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
-    <list size="6">
-      <item index="0" class="java.lang.String" itemvalue="Python.MainScript" />
-      <item index="1" class="java.lang.String" itemvalue="Python.Test" />
-      <item index="2" class="java.lang.String" itemvalue="Python.PointCrossover" />
-      <item index="3" class="java.lang.String" itemvalue="Python.test" />
-      <item index="4" class="java.lang.String" itemvalue="Python.Coltest" />
-      <item index="5" class="java.lang.String" itemvalue="Python.Rowtest" />
+    <list size="7">
+      <item index="0" class="java.lang.String" itemvalue="Python.Pointtest" />
+      <item index="1" class="java.lang.String" itemvalue="Python.Rowtest" />
+      <item index="2" class="java.lang.String" itemvalue="Python.MainScript" />
+      <item index="3" class="java.lang.String" itemvalue="Python.Test" />
+      <item index="4" class="java.lang.String" itemvalue="Python.PointCrossover" />
+      <item index="5" class="java.lang.String" itemvalue="Python.test" />
+      <item index="6" class="java.lang.String" itemvalue="Python.Coltest" />
     </list>
     <recent_temporary>
-      <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.Rowtest" />
-        <item index="1" class="java.lang.String" itemvalue="Python.Coltest" />
-        <item index="2" class="java.lang.String" itemvalue="Python.test" />
-        <item index="3" class="java.lang.String" itemvalue="Python.Test" />
-        <item index="4" class="java.lang.String" itemvalue="Python.PointCrossover" />
+      <list size="4">
+        <item index="0" class="java.lang.String" itemvalue="Python.Coltest" />
+        <item index="1" class="java.lang.String" itemvalue="Python.test" />
+        <item index="2" class="java.lang.String" itemvalue="Python.Test" />
+        <item index="3" class="java.lang.String" itemvalue="Python.PointCrossover" />
       </list>
     </recent_temporary>
   </component>
@@ -584,7 +635,14 @@
       <option name="project" value="LOCAL" />
       <updated>1465494622754</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="CoulmCrossover objektorientiert gestaltet sowie der Terminologie angepasst">
+      <created>1465495432806</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1465495432806</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TodoView">
@@ -606,7 +664,7 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3282532" sideWeight="0.125" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32942554" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3282532" sideWeight="0.875" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3282532" sideWeight="0.875" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3282967" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -639,7 +697,8 @@
     <MESSAGE value="ColumCrossover Fertig" />
     <MESSAGE value="def RowCrossover fertig" />
     <MESSAGE value="RowCrossover objektorientiert gestaltet sowie angepasst" />
-    <option name="LAST_COMMIT_MESSAGE" value="RowCrossover objektorientiert gestaltet sowie angepasst" />
+    <MESSAGE value="CoulmCrossover objektorientiert gestaltet sowie der Terminologie angepasst" />
+    <option name="LAST_COMMIT_MESSAGE" value="CoulmCrossover objektorientiert gestaltet sowie der Terminologie angepasst" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -648,13 +707,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Crossover/NaiveCrossover.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TargetFunction.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -894,14 +946,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Crossover/Crossover test/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Selector/AbstractSelector.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -944,14 +988,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Crossover/PointCrossover.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="8" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Selector/RouletteSelector.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -959,30 +995,6 @@
           <folding>
             <element signature="e#0#21#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Crossover/Crossover test/Rowtest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Chromosome.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Crossover/RowCrossover.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="29" column="46" selection-start-line="29" selection-start-column="46" selection-end-line="29" selection-end-column="107" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1002,10 +1014,58 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Chromosome.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Crossover/Crossover test/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Crossover/RowCrossover.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="19" column="24" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Crossover/Crossover test/Rowtest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="45" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Crossover/Crossover test/Pointtest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="215">
+          <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="60" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Crossover/ColumCrossover.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+        <state relative-caret-position="305">
+          <caret line="33" column="12" selection-start-line="33" selection-start-column="12" selection-end-line="33" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Crossover/PointCrossover.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="795">
+          <caret line="53" column="12" selection-start-line="53" selection-start-column="12" selection-end-line="53" selection-end-column="12" />
           <folding />
         </state>
       </provider>

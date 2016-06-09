@@ -16,6 +16,7 @@ def exchangecolum(newPopulation, i, randompoint): #function to crossover colums 
     newPopulation[i][1][:, 0:randompoint] = newPopulation[i + 1][1][:, 0:randompoint]
     newPopulation[i + 1][1][:, 0:randompoint] = zwischenspeicher
 
+    return newPopulation
 
 class ColumCrossover(AbstractCrossover.AbstractCrossover):
 
