@@ -1,36 +1,31 @@
-import numpy as np
 import random
-
 rand = random.Random()
 rand.seed(None)
 import AbstractCrossover
+import numpy as np
+
+class ColumCrossover(AbstractCrossover.AbstractCrossover): 'Tauscht die Gewichte für die B-Knoten aus, bei der Annahme: B1 ... Bn stehen in den Spalten,'
 
 
-class ColumCrossover(AbstractCrossover.AbstractCrossover):
-    'Tauscht die Gewichte für die B-Knoten aus, bei der Annahme: B1 ... Bn stehen in den Spalten, '
+    def __init__(self):
+        pass
 
 
-def __init__(self):
-    pass
+    def ColumCrossover(self, e):'Annamhme: e ist ein array mit Matrizen von A nach B oder B nach C'
 
+        i = 0
 
-def ColumCrossover(self, e):
-    'Annamhme: e ist ein array mit Matrizen von A nach B oder B nach C'
+        while i < (e[0].shape[1] - 1):  ' -1 um bei ungeraden arrays die letzte Einheit stehen zu lassen'
 
-    i = 0
+            randompoint = rand.randint(0, e[i].shape[1])
 
-    while i < (e[0].shape[1] - 1):  # -1 um bei ungeraden arrays die letzte Einheit stehen zu lassen
+            zwischenspeicher = np.matrix(e[i][:, 0:randompoint])
+            e[i][:, 0:randompoint] = e[i + 1][:, 0:randompoint]
+            e[i + 1][:, 0:randompoint] = zwischenspeicher
 
-        randompoint = rand.randint(0, e[i].shape[1])
+            i = i + 2
 
-        zwischenspeicher = np.matrix(e[i][:, 0:randompoint])
-        e[i][:, 0:randompoint] = e[i + 1][:, 0:randompoint]
-        e[i + 1][:, 0:randompoint] = zwischenspeicher
+        return e
 
-        i = i + 2
-
-    return e
-
-
-print('ColuuumCroschover isch ready to rumble')
+        print('ColuuumCroschover isch ready to rumble')
 

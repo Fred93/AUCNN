@@ -9,15 +9,13 @@ class PointCrossover(AbstractCrossover.AbstractCrossover):
         pass
 
 
-    def pointcrossover(self, list):
-        'Annamhme: list ist ein array mit einem array mit weights von A nach B oder B nach C'
+    def pointcrossover(self, list):'Annamhme: list ist ein array mit einem array mit weights von A nach B oder B nach C'
 
         i = 0
 
-        while i < (len(list)-1): #-1 um bei ungeraden arrays die letzte Einheit stehen zu lassen
+        while i < (len(list)-1): '-1 um bei ungeraden arrays die letzte Einheit stehen zu lassen'
 
-            randompoint = rand.randint(0, (len(list[i]))) #ohne minus isch ok, des läuft
-            #Die Anzahl der Attribute die vertauscht werden varriert mit jedem Tausch
+            randompoint = rand.randint(0, (len(list[i]))) 'Die Anzahl der Attribute die vertauscht werden varriert mit jedem Tausch'
 
             zwischenspeicher = list[i][0:randompoint]
             list[i][0:randompoint] = list[i+1][0:randompoint]
