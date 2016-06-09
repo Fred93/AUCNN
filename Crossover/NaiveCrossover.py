@@ -3,8 +3,7 @@ import AbstractCrossover
 class NaiveCrossover(AbstractCrossover.AbstractCrossover):
 
     def __init__(self):
-            pass
+        pass
 
-    def crossover(self, population):
-        return population
-
+    def crossover(self, e):
+        return e

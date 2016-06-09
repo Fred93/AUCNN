@@ -12,7 +12,7 @@ class GeneticNeuralNetwork():
 
     selector = Selector.NaiveSelector.NaiveSelector()
     mutator = Mutator.NaiveMutator.NaiveMutator()
-    crossover = Crossover.NaiveCrossover.NaiveCrossover()
+    crossover = Crossover.NaiveCrossover.NaiveCrossover() #wählen und richtig importen
 
     #Parameters
     amountGenerations = 500

@@ -26,4 +26,4 @@ class PointCrossover(AbstractCrossover.AbstractCrossover):
             i = i + 2
 
         return list
-        print('pointcroschover isch over, gel')
+        print('PointCroschover isch over, gel')
