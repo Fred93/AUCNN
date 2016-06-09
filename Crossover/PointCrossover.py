@@ -1,4 +1,3 @@
-import numpy as np
 import random
 rand = random.Random()
 rand.seed(None)
@@ -10,13 +9,17 @@ class PointCrossover(AbstractCrossover.AbstractCrossover):
         pass
 
 
-    def pointcrossover(self, ABlist, BClist):
-        'ABlist liste mit arrays von A nach B, BClist array mit Matrizen von B nach C'
+    def pointcrossover(self, list):
+        'Annamhme: list array mit Matrizen von A nach B oder B nach C'
 
-        for i in 0:len(ABlist): #funktioniert noch nicht! for muss noch angepasst werden und dann zu apply!
+        while i < (len(list)-1): #-1 um bei ungeraden arrays die letzte Einheit stehen zu lassen
 
-            randompoint = rand.randint(0, (len(ABlist[i]))) #ohne minus da, da python 0:4 als bis zur 4ten Zahl definiert
+            randompoint = rand.randint(0, (len(list[i]))) #ohne minus isch ok, des läuft
 
-            zwischenspeicher = ABlist[i][0:randompoint]
-            ABlist[i][0:randompoint] = ABlist[i+1][0:randompoint]
-            ABlist[i+1][0:randompoint] = zwischenspeicher
+            zwischenspeicher = list[i][0:randompoint]
+            list[i][0:randompoint] = list[i+1][0:randompoint]
+            list[i+1][0:randompoint] = zwischenspeicher
+
+            i = i + 2
+
+        print('pointcroschover isch over, gel')
