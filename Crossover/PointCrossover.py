@@ -6,6 +6,8 @@ import numpy as np
 
 def exchangepoint(newPopulation, i, randompoint, nrows, ncolum):
 
+    # have to access data by newPopulation[i].firstLevelMatrix?????
+
     #crossover for each chromosome pair attributes up to the randompoint of first level matrix
     #reshape into matrix with 1 row
     newPopulation[i][0] = np.reshape(newPopulation[i][0], nrows * mcolum)
