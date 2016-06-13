@@ -1,12 +1,27 @@
 import random
+
 rand = random.Random()
 rand.seed(None)
-import AbstractCrossover
+
 import numpy as np
 
-def exchangepoint(newPopulation, i, randompoint, nrows, ncolum):
+a = np.matrix([[1, 2, 3], [4, 5, 6]])
+b = np.matrix([[7, 8, 9], [10, 11, 12]])
 
-    # have to access data by newPopulation[i].firstLevelMatrix?????
+c = np.matrix([[13,14,15],[16,17,18]])
+d = np.matrix([[19,20,21], [22,23,24]])
+
+y = np.matrix([[25,26,27],[28,29,30]])
+z = np.matrix([[31,32,33],[34,35,36]])
+
+e = [a, b]
+f = [c, d]
+x = [y, z]
+
+newPopulation = [e, f, z]
+
+
+def exchangepoint(newPopulation, i, randompoint, nrows, ncolum):
 
     #crossover for each chromosome pair attributes up to the randompoint of first level matrix
     #reshape into matrix with 1 row
@@ -34,25 +49,19 @@ def exchangepoint(newPopulation, i, randompoint, nrows, ncolum):
 
     return newPopulation
 
-class PointCrossover(AbstractCrossover.AbstractCrossover):
+i = 0
+while i < (len(newPopulation) - 1):  # -1 um bei ungeraden row matrizen die letzte Einheit stehen zu lassen
 
-    def __init__(self):
-        pass
+    randompoint = rand.randint(0, newPopulation[i][0].shape[0])
+    print(randompoint)
+    nrows = newPopulation[i][0].shape[0]
+    mcolum = newPopulation[i][0].shape[1]
+    exchangepoint(newPopulation, i, randompoint,nrows,mcolum)
+
+    i = i + 2
 
 
-    def crossover(self, newPopulation):
-        i = 0
+print(newPopulation)
 
-        while i < (len(newPopulation) - 1):  # -1 um bei ungeraden row matrizen die letzte Einheit stehen zu lassen
 
-            randompoint = rand.randint(0, newPopulation[i][0].shape[0])
 
-            nrows = newPopulation[i][0].shape[0] #is to cash the original size of the matrix
-            mcolum = newPopulation[i][0].shape[1] #is to cash the original size of the matrix
-
-            exchangepoint(newPopulation, i, randompoint, nrows, mcolum)
-
-            i = i + 2
-
-        print('PointCroschover isch over, gel')
-        return newPopulation

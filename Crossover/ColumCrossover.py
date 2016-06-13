@@ -4,28 +4,40 @@ rand.seed(None)
 import AbstractCrossover
 import numpy as np
 
-class ColumCrossover(AbstractCrossover.AbstractCrossover): 'Tauscht die Gewichte für die B-Knoten aus, bei der Annahme: B1 ... Bn stehen in den Spalten,'
+def exchangecolum(newPopulation, i, randompoint): #function to crossover colums of chromosomes
 
+    #crossover for first level matrix (input to hidden layer)
+    zwischenspeicher = np.matrix(newPopulation[i][0][:, 0:randompoint])
+    newPopulation[i][0][:, 0:randompoint] = newPopulation[i + 1][0][:, 0:randompoint]
+    newPopulation[i + 1][0][:, 0:randompoint] = zwischenspeicher
+
+    #crossover for second level matrix (hidden to output layer)
+    zwischenspeicher = np.matrix(newPopulation[i][1][:, 0:randompoint])
+    newPopulation[i][1][:, 0:randompoint] = newPopulation[i + 1][1][:, 0:randompoint]
+    newPopulation[i + 1][1][:, 0:randompoint] = zwischenspeicher
+
+    return newPopulation
+
+class ColumCrossover(AbstractCrossover.AbstractCrossover):
 
     def __init__(self):
         pass
 
 
-    def ColumCrossover(self, e):'Annamhme: e ist ein array mit Matrizen von A nach B oder B nach C'
+    def crossover(self, newPopulation):
 
         i = 0
 
-        while i < (e[0].shape[1] - 1):  ' -1 um bei ungeraden arrays die letzte Einheit stehen zu lassen'
+        while i < (len(newPopulation) - 1):   #-1 to take care of the last cromosome of a uneven population
 
-            randompoint = rand.randint(0, e[i].shape[1])
+            randompoint = rand.randint(0, newPopulation[i][0].shape[1])  # creates for each pair of chromosomes a new random number, also be possible to be 0
+            exchangecolum(newPopulation, i,randompoint)  # calls exchangerow function to crossover the first level matrix and second level matrix of a cromosome pair
+            i = i + 2  # jumps to the next pair
 
-            zwischenspeicher = np.matrix(e[i][:, 0:randompoint])
-            e[i][:, 0:randompoint] = e[i + 1][:, 0:randompoint]
-            e[i + 1][:, 0:randompoint] = zwischenspeicher
-
-            i = i + 2
-
-        return e
 
         print('ColuuumCroschover isch ready to rumble')
+        return newPopulation  # after all chromosome pairs are crossovered, the function returns the newPopulation
+
+
+
 
