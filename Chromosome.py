@@ -5,7 +5,7 @@ class Chromosome:
     #TODO: use correct numbers
     amountInputUnits = 3
     amountHiddenUnits = 5
-    amountOutputUnits = 2
+    amountOutputUnits = 1
 
     firstLevelMatrix = None
     secondLevelMatrix = None

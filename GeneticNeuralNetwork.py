@@ -1,7 +1,11 @@
 from sympy.polys.polyoptions import Gen
 import Selector.NaiveSelector
+import Selector.RouletteSelector
+import Selector.TournamentSelector
 import Mutator.NaiveMutator
 import Crossover.NaiveCrossover
+import Crossover.ColumnCrossover
+import Mutator.NormalMutator
 import Chromosome
 import TargetFunction
 import FeedforwardNetwork
@@ -11,15 +15,15 @@ import random
 class GeneticNeuralNetwork():
 
 
-    selector = Selector.NaiveSelector.NaiveSelector()
-    mutator = Mutator.NaiveMutator.NaiveMutator()
-    crossover = Crossover.NaiveCrossover.NaiveCrossover()
+    selector = Selector.RouletteSelector.RouletteSelector()
+    mutator = Mutator.NormalMutator.NaiveMutator()
+    crossover = Crossover.ColumnCrossover.ColumnCrossover()
 
     #Parameters
     amountGenerations = 500
-    populationSize = 200
+    populationSize = 16
 
-    mutationRate = 0.01
+    mutationRate = 0.1
     mutationRange = (-0.2, 0.2)
     crossoverRate = 0.25
 
@@ -39,35 +43,36 @@ class GeneticNeuralNetwork():
         #TODO: implement more sophisticated stop condition
         population = self.initializePopulation()
         for i in range(self.amountGenerations):
+            print "Process Generation #" + str(i)
             population = self.processPopulation(population, trainingset)
 
     def processPopulation(self, population, trainingset):
-        print "Process Population"
-        #fitness = self.calculateFitnessVector(population, trainingset)
-        fitness = np.array((0.5,0.7,0.1,0.3,0.9,0.8))
+        fitness = self.calculateFitnessVector(population, trainingset)
+        #fitness = np.array((0.5,0.7,0.1,0.3,0.9,0.8,0.5,0.7,0.1,0.3,0.9,0.8,0.1,0.4,0.5,0.2))
+        print "\t Selection ..."
         newPopulation = self.selector.select(population, fitness)
+        print "\t Crossover ..."
         crossoverIndices = random.sample(range(0, population.size), int(population.size*self.crossoverRate))
         newPopulation[crossoverIndices] = self.crossover.crossover(newPopulation[crossoverIndices])
 
+        print "\t Mutation ..."
         mutatedPopulation = self.mutator.mutate(newPopulation, self.mutationRate, self.mutationRange)
-
+        #print "mutated population: "
+        #print mutatedPopulation.size
         return mutatedPopulation
 
     def testNeuralNetwork(self, chromosome, testset):
-        print chromosome
-        print "hey"
         Ys = np.transpose(np.mat(np.array((1,0,0,1,0,1))))
         fnn = FeedforwardNetwork.FeedforwardNetwork(chromosome)
         output = fnn.calculateOutput(testset)
-        print output
         target = TargetFunction.TargetFunction()
         auc = target.getAUC(output, Ys)
         return auc
 
     def calculateFitnessVector(self, population, testset):
-        vec = np.array
+        vec = np.array([])
         for chromosome in population:
-            np.append(vec, self.testNeuralNetwork(chromosome, testset))
+            vec = np.append(vec, self.testNeuralNetwork(chromosome, testset))
         return  vec
 
 if __name__ == "__main__":

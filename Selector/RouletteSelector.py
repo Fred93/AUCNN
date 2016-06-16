@@ -34,8 +34,8 @@ class RouletteSelector(AbstractSelector.AbstractSelector):
             r = rand.random()
             for (i, individual) in enumerate(population):
                 if r <= probs[i]:
-                    new_population_idx = np.append(new_population_idx,individual)
+                    new_population_idx = np.append(new_population_idx,i)
                     break
                 
-        # return selected items from the population        
+        # return selected items from the population
         return population[new_population_idx.astype(int)]
