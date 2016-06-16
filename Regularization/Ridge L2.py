@@ -1,13 +1,26 @@
 import random
+
 rand = random.Random()
 rand.seed(None)
 
-from sklearn import linear_model
 import numpy as np
 
-trainingsdata = np.matrix([[2, 9, 10, 11, 12, 12],[22,8,9,10,11,12]])
+class RidgeRegulatization():
 
-targetvalues = np.matrix([[12],[22]])
+    def __init__(self):
+        pass
 
-nnregularization= linear_model.Ridge(alpha=1.0).fit(trainingsdata,targetvalues)
+    def RidgeReg(self,Chromosome):
 
+        nrows = Chromosome.firstLevelMatrix.shape[0] #bekomme die Anzahl an Reihen
+        mcolum = Chromosome.firstLevelMatrix.shape[1] #bekomme die Anzahl der Columns
+
+        firstLevelVektor = np.reshape(Chromosome.firstLevelMatrix, nrows * mcolum) #shape firstLevelMatrix des Chromosomes zu einem Vektor
+        secondLevelVektor = np.reshape(Chromosome.secondLevelMatrix, nrows * mcolum) #shape secondLevelMatrix des Chromosomes zu einem Vektor
+
+        vektorone = np.concatenate((firstLevelVektor,secondLevelVektor),axis=1) #Verbinde firstLevelMatrix und secondLevelMatrix zu einem langen Vektor
+        vektortwo = np.reshape(concrete,(concrete.shape[1],1)) #shape den zweiten verktor mit der anzahl an columns in den reihen
+
+        regterm = np.power(vektorone*vektortwo,(1/2)) #ziehe die Wurzel von dem auf summierten Betas
+
+        return(regterm)
