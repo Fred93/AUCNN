@@ -7,15 +7,17 @@ import numpy as np
 
 def exchangerow(newPopulation, i, randompoint): #function to crossover rows of chromosomes
 
+    CrossoverIndices = random.sample(range(0, newPopulation[i].firstLevelMatrix.shape[0] - 1), randompoint) #sample mit Anzahl, randompoint, von einer randomanzahl an columns
+
     #crossover for first level matrix (input to hidden layer)
-    zwischenspeicher = np.matrix(newPopulation[i].firstLevelMatrix[0:randompoint, :])
-    newPopulation[i].firstLevelMatrix[0:randompoint, :] = newPopulation[i + 1].firstLevelMatrix[0:randompoint, :] #firstLevelMatrix = [0]
-    newPopulation[i + 1].firstLevelMatrix[0:randompoint, :] = zwischenspeicher
+    zwischenspeicher = np.matrix(newPopulation[i].firstLevelMatrix[CrossoverIndices, :])
+    newPopulation[i].firstLevelMatrix[CrossoverIndices, :] = newPopulation[i + 1].firstLevelMatrix[CrossoverIndices, :] #firstLevelMatrix = [0]
+    newPopulation[i + 1].firstLevelMatrix[CrossoverIndices, :] = zwischenspeicher
 
     #crossover for second level matrix (hidden to output layer)
-    zwischenspeicher = np.matrix(newPopulation[i].secondLevelMatrix[0:randompoint, :])
-    newPopulation[i].secondLevelMatrix[0:randompoint, :] = newPopulation[i + 1].secondLevelMatrix[0:randompoint, :] #secondLevelMatrix = [1]
-    newPopulation[i + 1].secondLevelMatrix[0:randompoint, :] = zwischenspeicher
+    zwischenspeicher = np.matrix(newPopulation[i].secondLevelMatrix[CrossoverIndices, :])
+    newPopulation[i].secondLevelMatrix[CrossoverIndices, :] = newPopulation[i + 1].secondLevelMatrix[CrossoverIndices, :] #secondLevelMatrix = [1]
+    newPopulation[i + 1].secondLevelMatrix[CrossoverIndices, :] = zwischenspeicher
 
     return newPopulation
 

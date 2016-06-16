@@ -21,28 +21,6 @@ x = [y, z]
 l = [e, f, z]
 
 
-def exchangerow(l, i, randompoint):
+crossoverIndices = random.sample(range(0, len(l)), 2)
 
-    zwischenspeicher = np.matrix(l[i][0][0:randompoint, :])
-    l[i][0][0:randompoint, :] = l[i + 1][0][0:randompoint, :]
-    l[i + 1][0][0:randompoint, :] = zwischenspeicher
-
-    zwischenspeicher = np.matrix(l[i][1][0:randompoint, :])
-    l[i][1][0:randompoint, :] = l[i + 1][1][0:randompoint, :]
-    l[i + 1][1][0:randompoint, :] = zwischenspeicher
-
-
-i = 0
-while i < (len(l) - 1):  # -1 um bei ungeraden row matrizen die letzte Einheit stehen zu lassen
-
-    randompoint = rand.randint(0, l[i][0].shape[0])
-    print(randompoint)
-
-    exchangerow(l, i, randompoint)
-
-    i = i + 2
-
-
-print(l)
-
-
+print(crossoverIndices)
