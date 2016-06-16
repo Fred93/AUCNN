@@ -1,9 +1,10 @@
+from sympy.polys.polyoptions import Gen
 import Selector.NaiveSelector
 import Mutator.NaiveMutator
 import Crossover.NaiveCrossover
 import Chromosome
 import TargetFunction
-
+import FeedforwardNetwork
 import numpy as np
 import random
 
@@ -22,10 +23,14 @@ class GeneticNeuralNetwork():
     mutationRange = (-0.2, 0.2)
     crossoverRate = 0.25
 
+    def solve(self):
+        self.trainNeuralNetwork(np.arange(18).reshape((6,3)))
+
     def initializePopulation(self):
+        print "initialize population ... "
         population = np.array([])
         for i in range(self.populationSize):
-            chromosome = Chromosome()
+            chromosome = Chromosome.Chromosome()
             chromosome.initialize()
             population = np.append(population, chromosome)
         return population
@@ -37,23 +42,34 @@ class GeneticNeuralNetwork():
             population = self.processPopulation(population, trainingset)
 
     def processPopulation(self, population, trainingset):
-        newPopulation = self.selector.select(population, trainingset)
-
-        crossoverIndices = random.sample(range(0, population.size), population.size*self.crossoverRate)
+        print "Process Population"
+        #fitness = self.calculateFitnessVector(population, trainingset)
+        fitness = np.array((0.5,0.7,0.1,0.3,0.9,0.8))
+        newPopulation = self.selector.select(population, fitness)
+        crossoverIndices = random.sample(range(0, population.size), int(population.size*self.crossoverRate))
         newPopulation[crossoverIndices] = self.crossover.crossover(newPopulation[crossoverIndices])
 
         mutatedPopulation = self.mutator.mutate(newPopulation, self.mutationRate, self.mutationRange)
 
         return mutatedPopulation
 
-
-
-    def calculateNetworkOutput(self, population, data):
-            return 1
-
-    def testNeuralNetwork(self, network, testset):
-        Ys = None
-        output = self.calculateNetworkOutput(network, testset)
-        target = TargetFunction()
+    def testNeuralNetwork(self, chromosome, testset):
+        print chromosome
+        print "hey"
+        Ys = np.transpose(np.mat(np.array((1,0,0,1,0,1))))
+        fnn = FeedforwardNetwork.FeedforwardNetwork(chromosome)
+        output = fnn.calculateOutput(testset)
+        print output
+        target = TargetFunction.TargetFunction()
         auc = target.getAUC(output, Ys)
         return auc
+
+    def calculateFitnessVector(self, population, testset):
+        vec = np.array
+        for chromosome in population:
+            np.append(vec, self.testNeuralNetwork(chromosome, testset))
+        return  vec
+
+if __name__ == "__main__":
+    gnn = GeneticNeuralNetwork()
+    gnn.solve()
