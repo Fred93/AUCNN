@@ -3,7 +3,6 @@ from sklearn.metrics import roc_curve, auc
 class TargetFunction:
 
     def getAUC(self,prediction,labels):
-        
         # import metric functions
         
         # get False Positive and True Positive Rate using roc_curve 
