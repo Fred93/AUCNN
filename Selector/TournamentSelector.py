@@ -35,13 +35,9 @@ class TournamentSelector(AbstractSelector.AbstractSelector):
              # randomly choose k solution
              random_solutions = np.random.randint(population_size, size = tournmament_size )
              # add the best solution of the tournament to new_population
-             for i in population[random_solutions]:
-                 print random_solutions
-                 print fitness
-                 print fitness[random_solutions]
-                 print i # --> To fix: i us a chromosome
+             for i in random_solutions:
                  if fitness[i] == max(fitness[random_solutions]):
-                     new_population_idx = np.append(new_population_idx, population[i])
+                     new_population_idx = np.append(new_population_idx, i)
                      break
 
          # return selected items from the population

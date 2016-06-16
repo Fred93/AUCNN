@@ -4,8 +4,11 @@ class Chromosome:
 
     #TODO: use correct numbers
     amountInputUnits = 3
-    amountHiddenUnits = 5
+    amountHiddenUnits = None
     amountOutputUnits = 1
+
+    def __init__(self, amountHiddenUnits):
+        self.amountHiddenUnits = amountHiddenUnits
 
     firstLevelMatrix = None
     secondLevelMatrix = None
