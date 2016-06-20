@@ -2,9 +2,16 @@ import numpy as np
 
 class Chromosome:
 
-    #TODO: use correct numbers
+    
+    """
+    Notes on hidden units: tuning the benchmark model found that the best model 
+    had 200 hidden units with a weight decay of 1e-5. 200 was the biggest number tried
+    and the optimal number is probably higher. However, if computation seems to be slow
+    we could decrease the hidden units as the the benchmark did not seem to be hugly sensitive
+    to it (e.g. 200 hidden units gave an of auc = 0.62 and 5 hidden units of auc = 0.60)
+    """
     amountInputUnits = 3
-    amountHiddenUnits = None
+    amountHiddenUnits = 200 # updated (weight decay should be 1e-5, updated in TargetFunction as default)
     amountOutputUnits = 1
 
     def __init__(self, amountHiddenUnits):
