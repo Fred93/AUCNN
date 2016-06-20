@@ -37,8 +37,8 @@ class AbstractSelector():
     Output: an one dimensional np.array containing the indices of the 10% best solution
     """
     
-    def elitism(self, population, fitness, eltism_rate=0.1):
-        n = int(len(fitness) * eltism_rate)
+    def elitism(self, population, fitness, elitism_rate=0.1):
+        n = int(len(fitness) * elitism_rate)
         return np.argpartition(fitness,-n)[-n:]
     
  
