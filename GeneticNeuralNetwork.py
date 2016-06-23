@@ -40,7 +40,7 @@ class GeneticNeuralNetwork():
     bestSolutions = np.array([])
 
     def solve(self):
-        path = "/gitdata/training.csv"
+        path = "C:/Users/D059348/PycharmProjects/AUCNN/Data/training.csv"
         data = pd.read_csv(path)
         y = data['returnBin']
         X = data.drop(['returnBin', 'Unnamed: 0'], axis=1)
