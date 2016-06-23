@@ -26,7 +26,7 @@ class ColumnCrossover(AbstractCrossover.AbstractCrossover):
 
     def exchangecolum(self, newPopulation, i, randompoint): #function to crossover colums of chromosomes
 
-        CrossoverIndices = random.sample(range(0, newPopulation[i].firstLevelMatrix.shape[1] - 1), randompoint)
+        CrossoverIndices = random.sample(range(0, newPopulation[i].firstLevelMatrix.shape[1]), randompoint)
 
         #crossover for first level matrix (input to hidden layer)
         zwischenspeicher = np.matrix(newPopulation[i].firstLevelMatrix[:, CrossoverIndices])
