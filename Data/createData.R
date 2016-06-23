@@ -46,11 +46,13 @@ df[,fourthQuarter := dummys[,fourthQuarter_dummy]]
 # perform outlier detection
 source("outlierDetection.R")
 
+
 ## Deleting all unnecessary variables for prediction
 df_new <- df[, `:=`(unique_ID=NULL, orderID=NULL, orderDate=NULL, articleID=NULL, colorCode=NULL,
                   sizeCode=NULL, productGroup=NULL, voucherID=NULL,customerID=NULL,deviceID=NULL,
                   paymentMethod=NULL,special_group=NULL,yearQuarter =NULL, returnQuantity=NULL,
-                  Newcommers=NULL,returningCustomer=NULL, Sale=NULL,Loyals=NULL)]
+                  Newcommers=NULL,returningCustomer=NULL, Sale=NULL,Loyals=NULL, totOrder=NULL)]
+
 
 
 ## splitting df_new into trainings(60%) and validation set(40%) 
