@@ -3,12 +3,14 @@ import numpy as np
 class Chromosome:
 
     #TODO: use correct numbers
-    amountInputUnits = 3
+    amountInputUnits = None
     amountHiddenUnits = None
-    amountOutputUnits = 1
+    amountOutputUnits = None
 
-    def __init__(self, amountHiddenUnits):
+    def __init__(self, amountInputUnits, amountHiddenUnits, amountOutputUnits):
+        self.amountInputUnits = amountInputUnits
         self.amountHiddenUnits = amountHiddenUnits
+        self.amountOutputUnits = amountOutputUnits
 
     firstLevelMatrix = None
     secondLevelMatrix = None
