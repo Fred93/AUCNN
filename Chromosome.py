@@ -28,5 +28,5 @@ class Chromosome:
                                             )
                                             
         self.secondLevelMatrix = np.mat(
-        np.round(1*np.random.random_sample((self.amountHiddenUnits+1,self.amountOutputUnits)), 2) - 0.5
+        np.round(2*np.random.random_sample((self.amountHiddenUnits+1,self.amountOutputUnits)), 2) - 1
                                              )

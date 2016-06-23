@@ -1,10 +1,10 @@
-from sympy.polys.polyoptions import Gen
 import Selector.NaiveSelector
 import Selector.RouletteSelector
 import Selector.TournamentSelector
 import Mutator.NaiveMutator
 import Crossover.NaiveCrossover
 import Crossover.ColumnCrossover
+import Crossover.RowCrossover
 import Mutator.NormalMutator
 import Chromosome
 import Regularization.RidgeL2
@@ -27,11 +27,11 @@ class GeneticNeuralNetwork():
     amountGenerations = 20
     populationSize = 50
 
-    mutationRate = 0.05
-    mutationRange = (-0.1, 0.1)
+    mutationRate = 0.01
+    mutationRange = (-0.05, 0.05)
     crossoverRate = 0.01
 
-    weightDecay = 1e-5
+    weightDecay = 0 #1e-5
 
     avgSolutions = np.array([])
     bestSolutions = np.array([])
@@ -77,14 +77,14 @@ class GeneticNeuralNetwork():
         #print("Avg Fitness after selection: " + str(np.mean(self.calculateFitnessVector(newPopulation, X, y))))
         print "\t Crossover ..."
         crossoverIndices = random.sample(range(0, population.size), int(population.size*self.crossoverRate))
-        newPopulation[crossoverIndices] = self.crossover.crossover(newPopulation[crossoverIndices])
+        #newPopulation[crossoverIndices] = self.crossover.crossover(newPopulation[crossoverIndices])
 
         print "\t Mutation ..."
         mutatedPopulation = self.mutator.mutate(newPopulation, self.mutationRate, self.mutationRange)
         #print "mutated population: "
         #print mutatedPopulation.size
         return mutatedPopulation
-
+        #return newPopulation
     def testNeuralNetwork(self, chromosome, X, y):
         chromosome = chromosome[0]
         fnn = FeedforwardNetwork.FeedforwardNetwork(chromosome)

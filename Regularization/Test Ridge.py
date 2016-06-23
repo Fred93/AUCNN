@@ -22,9 +22,11 @@ a = np.reshape(newPopulation[0][0], nrows * mcolum) #shape es zu einem Vektor
 b = np.reshape(newPopulation[1][0], nrows * mcolum) #shape es zu einem Vektor
 
 concrete = np.concatenate ((a,b),axis=1) #Verbinde es zu einem langen Vektor
-
+print(concrete)
 part = np.reshape(concrete,(concrete.shape[1],1)) #shape den zweiten verktor mit der anzahl an columns in den reihen
+print(part)
 
+print(concrete*part)
 regularizationterm = np.power(concrete*part,(1/2)) #ziehe die Wurzel von dem auf summierten Betas
 
 print(regularizationterm)

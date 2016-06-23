@@ -12,6 +12,7 @@ class ColumnCrossover(AbstractCrossover.AbstractCrossover):
 
 
     def crossover(self, newPopulation):
+
         i = 0
 
         while i < (len(newPopulation) - 1):   #-1 to take care of the last cromosome of a uneven population
@@ -25,15 +26,17 @@ class ColumnCrossover(AbstractCrossover.AbstractCrossover):
 
     def exchangecolum(self, newPopulation, i, randompoint): #function to crossover colums of chromosomes
 
+        CrossoverIndices = random.sample(range(0, newPopulation[i].firstLevelMatrix.shape[1] - 1), randompoint)
+
         #crossover for first level matrix (input to hidden layer)
-        zwischenspeicher = np.matrix(newPopulation[i].firstLevelMatrix[:, 0:randompoint])
-        newPopulation[i].firstLevelMatrix[:, 0:randompoint] = newPopulation[i + 1].firstLevelMatrix[:, 0:randompoint] #.firstLevelMatrix() = [0]
-        newPopulation[i + 1].firstLevelMatrix[:, 0:randompoint] = zwischenspeicher
+        zwischenspeicher = np.matrix(newPopulation[i].firstLevelMatrix[:, CrossoverIndices])
+        newPopulation[i].firstLevelMatrix[:, CrossoverIndices] = newPopulation[i + 1].firstLevelMatrix[:, CrossoverIndices] #.firstLevelMatrix() = [0]
+        newPopulation[i + 1].firstLevelMatrix[:, CrossoverIndices] = zwischenspeicher
 
         #crossover for second level matrix (hidden to output layer)
-        zwischenspeicher = np.matrix(newPopulation[i].secondLevelMatrix[:, 0:randompoint])
-        newPopulation[i].secondLevelMatrix[:, 0:randompoint] = newPopulation[i + 1].secondLevelMatrix[:, 0:randompoint] #.secondLevelMatix() = [1]
-        newPopulation[i + 1].secondLevelMatrix[:, 0:randompoint] = zwischenspeicher
+        zwischenspeicher = np.matrix(newPopulation[i].secondLevelMatrix[:,CrossoverIndices])
+        newPopulation[i].secondLevelMatrix[:, CrossoverIndices] = newPopulation[i + 1].secondLevelMatrix[:, CrossoverIndices] #.secondLevelMatix() = [1]
+        newPopulation[i + 1].secondLevelMatrix[:, CrossoverIndices] = zwischenspeicher
 
         return newPopulation
 
