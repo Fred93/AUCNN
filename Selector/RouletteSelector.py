@@ -26,7 +26,7 @@ class RouletteSelector(AbstractSelector.AbstractSelector):
         new_population_idx = np.array([])
         # if elitism strategy is used call eltitsm() and reduce number of iteration accodingly
         if perform_elitism is True:
-            new_population_idx = elitism(population, fitness, elitism_rate)  
+            new_population_idx = self.elitism(population, fitness, elitism_rate)
             num -= int(len(fitness) * elitism_rate)
     
         # Select indices of solution in the population using roulette wheel selection

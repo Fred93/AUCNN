@@ -13,6 +13,7 @@ import FeedforwardNetwork
 import numpy as np
 import pandas as pd
 import random
+import Plotter
 
 class GeneticNeuralNetwork():
 
@@ -23,7 +24,7 @@ class GeneticNeuralNetwork():
     regularizer = Regularization.RidgeL2.RidgeL2()
 
     #Parameters
-    amountGenerations = 200
+    amountGenerations = 20
     populationSize = 50
 
     mutationRate = 0.05
@@ -31,6 +32,9 @@ class GeneticNeuralNetwork():
     crossoverRate = 0.01
 
     weightDecay = 1e-5
+
+    avgSolutions = np.array([])
+    bestSolutions = np.array([])
 
     def solve(self):
         path = "C:/Users/D059348/PycharmProjects/AUCNN/Data/training.csv"
@@ -40,7 +44,10 @@ class GeneticNeuralNetwork():
         X = data.drop(['returnBin', 'Unnamed: 0'], axis=1)
         X = X[0:10000]
 
+        #IMPLEMENT CV HERE!!!
+
         self.trainNeuralNetwork(X,y)
+        Plotter.plotLearningCurve(self.bestSolutions, self.avgSolutions)
 
     def initializePopulation(self, inputUnits):
         print "initialize population ... "
@@ -61,10 +68,12 @@ class GeneticNeuralNetwork():
     def processPopulation(self, population, X, y):
         fitness = self.calculateFitnessVector(population, X, y)
         print("\t Fittest Chromosome: " + str(np.max(fitness)))
+        self.bestSolutions = np.append(self.bestSolutions, np.max(fitness))
+        self.avgSolutions = np.append(self.avgSolutions, np.mean(fitness))
         #fitness = np.array((0.5,0.7,0.1,0.3,0.9,0.8,0.5,0.7,0.1,0.3,0.9,0.8,0.1,0.4,0.5,0.2))
         print "\t Selection ..."
         print("\t Avg Fitness before selection: " + str(np.mean(fitness)))
-        newPopulation = self.selector.select(population, fitness)
+        newPopulation = self.selector.select(population, fitness, perform_elitism=True)
         #print("Avg Fitness after selection: " + str(np.mean(self.calculateFitnessVector(newPopulation, X, y))))
         print "\t Crossover ..."
         crossoverIndices = random.sample(range(0, population.size), int(population.size*self.crossoverRate))
