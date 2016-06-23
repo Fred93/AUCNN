@@ -13,7 +13,7 @@ class RouletteSelector(AbstractSelector.AbstractSelector):
     
 
     def select(self, population, fitness, perform_elitism = False, elitism_rate = 0.1):
-        theta = 0.01
+        theta = 0.1
         # compute total fitness
         total_fitness = float(sum(fitness))
         # compute relative fitness value

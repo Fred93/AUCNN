@@ -15,6 +15,8 @@ import numpy as np
 import pandas as pd
 import random
 import Plotter
+import dask.dataframe as dd
+import dask.multiprocessing
 
 class GeneticNeuralNetwork():
 
@@ -41,9 +43,9 @@ class GeneticNeuralNetwork():
         path = "C:/Users/D059348/PycharmProjects/AUCNN/Data/training.csv"
         data = pd.read_csv(path)
         y = data['returnBin']
-        y = y[0:10000]
+        y = y[0:100000]
         X = data.drop(['returnBin', 'Unnamed: 0'], axis=1)
-        X = X[0:10000]
+        X = X[0:100000]
 
         #IMPLEMENT CV HERE!!!
 
@@ -96,8 +98,16 @@ class GeneticNeuralNetwork():
         return np.array([auc])
 
     def calculateFitnessVector(self, population, X, y):
-        fitness = np.apply_along_axis(self.testNeuralNetwork, axis=0, arr=np.mat(population), X=X, y=y)
-        return fitness[0]
+
+        df = pd.DataFrame(population)
+        dask.set_options(get=dask.multiprocessing.get)
+        df = dd.from_pandas(df, npartitions=20)
+        dd_result = df.apply(self.testNeuralNetwork, axis=1, args=(X,y,))
+        res = dd_result.compute()
+        return res[0]
+
+        #fitness = np.apply_along_axis(self.testNeuralNetwork, axis=0, arr=np.mat(population), X=X, y=y)
+        #return fitness[0]
 
 if __name__ == "__main__":
     gnn = GeneticNeuralNetwork()
