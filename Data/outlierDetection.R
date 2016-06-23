@@ -33,10 +33,6 @@ df$rrp <- outlier_replacement(df$rrp)
 summary(df$cumArticleCount)
 df$cumArticleCount <- outlier_replacement(df$cumArticleCount)
 
-# totOrder
-summary(df$totOrder)
-df$totOrder <- outlier_replacement(df$totOrder,integer=TRUE)
-
 # number_of_same_items_in_order
 summary(df$number_of_same_items_in_order)
 df$number_of_same_items_in_order <- outlier_replacement(df$number_of_same_items_in_order, integer=TRUE)
@@ -106,8 +102,15 @@ df$relative_deviation_price_mean_byCustomerID <- outlier_replacement(df$relative
 summary(df$relative_deviation_price_mean_byProductGroup)
 df$relative_deviation_price_mean_byProductGroup <- outlier_replacement(df$relative_deviation_price_mean_byProductGroup)
 
+summary(df$not_delivered_customer)
+df$not_delivered_customer <- outlier_replacement(df$not_delivered_customer,integer=TRUE)
+
+summary(df$not_delivered_order)
+df$not_delivered_order <- outlier_replacement(df$not_delivered_order,integer=TRUE)
 
 
+summary(df$gratis_per_customer)
+df$gratis_per_customer <- outlier_replacement(df$gratis_per_customer,integer=TRUE)
 
 
 
