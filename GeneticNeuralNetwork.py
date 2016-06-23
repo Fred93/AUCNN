@@ -14,6 +14,7 @@ import FeedforwardNetwork
 import numpy as np
 import pandas as pd
 import random
+import pickle
 #import Plotter
 #import dask.dataframe as dd
 #import dask.multiprocessing
@@ -51,9 +52,9 @@ class GeneticNeuralNetwork():
         X = X.values[shuffle]
         y = y[shuffle]
         subset = 100000
-        #return X[0:subset], y[0:subset]
+        X = X[0:subset]
+        y = y[0:subset]
 
-        X = X[subsetInds]
 
         #IMPLEMENT CV HERE!!!
 
