@@ -23,12 +23,12 @@ class GeneticNeuralNetwork():
     regularizer = Regularization.RidgeL2.RidgeL2()
 
     #Parameters
-    amountGenerations = 500
-    populationSize = 100
+    amountGenerations = 200
+    populationSize = 200
 
     mutationRate = 0.05
     mutationRange = (-0.1, 0.1)
-    crossoverRate = 0.0
+    crossoverRate = 0.05
 
     weightDecay = 1e-5
 
@@ -60,12 +60,12 @@ class GeneticNeuralNetwork():
 
     def processPopulation(self, population, X, y):
         fitness = self.calculateFitnessVector(population, X, y)
-        #print("\t Fittest Chromosome: " + str(np.max(fitness)))
+        print("\t Fittest Chromosome: " + str(np.max(fitness)))
         #fitness = np.array((0.5,0.7,0.1,0.3,0.9,0.8,0.5,0.7,0.1,0.3,0.9,0.8,0.1,0.4,0.5,0.2))
         print "\t Selection ..."
-        print("Avg Fitness before selection: " + str(np.mean(fitness)))
+        print("\t Avg Fitness before selection: " + str(np.mean(fitness)))
         newPopulation = self.selector.select(population, fitness)
-        print("Avg Fitness after selection: " + str(np.mean(self.calculateFitnessVector(newPopulation, X, y))))
+        #print("Avg Fitness after selection: " + str(np.mean(self.calculateFitnessVector(newPopulation, X, y))))
         print "\t Crossover ..."
         crossoverIndices = random.sample(range(0, population.size), int(population.size*self.crossoverRate))
         newPopulation[crossoverIndices] = self.crossover.crossover(newPopulation[crossoverIndices])
