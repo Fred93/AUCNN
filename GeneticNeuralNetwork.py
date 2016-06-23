@@ -40,7 +40,7 @@ class GeneticNeuralNetwork():
     bestSolutions = np.array([])
 
     def solve(self):
-        path = "C:/Users/D059348/PycharmProjects/AUCNN/Data/training.csv"
+        path = "/gitdata/training.csv"
         data = pd.read_csv(path)
         y = data['returnBin']
         X = data.drop(['returnBin', 'Unnamed: 0'], axis=1)
@@ -48,10 +48,10 @@ class GeneticNeuralNetwork():
         np.random.seed(seed)
         shuffle = np.arange(len(y))
         np.random.shuffle(shuffle)
-        X = X[shuffle]
+        X = X.values[shuffle]
         y = y[shuffle]
         subset = 100000
-        return X[0:subset], y[0:subset]
+        #return X[0:subset], y[0:subset]
 
         X = X[subsetInds]
 
