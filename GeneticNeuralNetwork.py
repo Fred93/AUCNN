@@ -14,9 +14,9 @@ import FeedforwardNetwork
 import numpy as np
 import pandas as pd
 import random
-import Plotter
-import dask.dataframe as dd
-import dask.multiprocessing
+#import Plotter
+#import dask.dataframe as dd
+#import dask.multiprocessing
 
 class GeneticNeuralNetwork():
 
@@ -27,30 +27,41 @@ class GeneticNeuralNetwork():
     regularizer = Regularization.RidgeL2.RidgeL2()
 
     #Parameters
-    amountGenerations = 20
-    populationSize = 50
+    amountGenerations = 500
+    populationSize = 300
 
-    mutationRate = 0.01
+    mutationRate = 0.05
     mutationRange = (-0.05, 0.05)
-    crossoverRate = 0.1
+    crossoverRate = 0.05
 
-    weightDecay = 0 #1e-5
+    weightDecay = 1e-5
 
     avgSolutions = np.array([])
     bestSolutions = np.array([])
 
     def solve(self):
-        path = "C:/Users/D059348/PycharmProjects/AUCNN/Data/training.csv"
+        path = "/gitdata/training.csv"
         data = pd.read_csv(path)
         y = data['returnBin']
-        y = y[0:100000]
         X = data.drop(['returnBin', 'Unnamed: 0'], axis=1)
-        X = X[0:100000]
+        seed = np.random.seed(3007)
+        np.random.seed(seed)
+        shuffle = np.arange(len(y))
+        np.random.shuffle(shuffle)
+        X = X[shuffle]
+        y = y[shuffle]
+        subset = 100000
+        return X[0:subset], y[0:subset]
+
+        X = X[subsetInds]
 
         #IMPLEMENT CV HERE!!!
 
         self.trainNeuralNetwork(X,y)
-        Plotter.plotLearningCurve(self.bestSolutions, self.avgSolutions)
+        #Plotter.plotLearningCurve(self.bestSolutions, self.avgSolutions)
+
+        pickle.dump(self.bestSolutions, open("/gitdata/bestSolutions.pickle","wb"), protocol=2)
+        pickle.dump(self.avgSolutions, open("/gitdata/avgSolutions.pickle","wb"), protocol=2)
 
     def initializePopulation(self, inputUnits):
         print "initialize population ... "
@@ -98,16 +109,16 @@ class GeneticNeuralNetwork():
         return np.array([auc])
 
     def calculateFitnessVector(self, population, X, y):
-
+        '''
         df = pd.DataFrame(population)
         dask.set_options(get=dask.multiprocessing.get)
         df = dd.from_pandas(df, npartitions=20)
         dd_result = df.apply(self.testNeuralNetwork, axis=1, args=(X,y,))
         res = dd_result.compute()
         return res[0]
-
-        #fitness = np.apply_along_axis(self.testNeuralNetwork, axis=0, arr=np.mat(population), X=X, y=y)
-        #return fitness[0]
+        '''
+        fitness = np.apply_along_axis(self.testNeuralNetwork, axis=0, arr=np.mat(population), X=X, y=y)
+        return fitness[0]
 
 if __name__ == "__main__":
     gnn = GeneticNeuralNetwork()
