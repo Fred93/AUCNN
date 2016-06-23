@@ -26,7 +26,7 @@ class RowCrossover(AbstractCrossover.AbstractCrossover):
 
     def exchangerow(self, newPopulation, i, randompoint): #function to crossover rows of chromosomes
 
-        CrossoverIndices = random.sample(range(0, newPopulation[i].firstLevelMatrix.shape[0] - 1), randompoint) #sample mit Anzahl, randompoint, von einer randomanzahl an columns
+        CrossoverIndices = random.sample(range(0, newPopulation[i].firstLevelMatrix.shape[0]), randompoint) #sample mit Anzahl, randompoint, von einer randomanzahl an columns
 
         #crossover for first level matrix (input to hidden layer)
         zwischenspeicher = np.matrix(newPopulation[i].firstLevelMatrix[CrossoverIndices, :])

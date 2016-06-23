@@ -20,11 +20,10 @@ x = [y, z]
 
 l = [e, f, z]
 
-print (l[0][0][0,:])
 
 def exchangerow(l, i, randompoint):
 
-    CrossoverIndices = random.sample(range(0, len(l)-1), randompoint)
+    CrossoverIndices = random.sample(range(0, l[0][0].shape[0]), randompoint)
     print(CrossoverIndices)
 
     zwischenspeicher = np.matrix(l[i][0][CrossoverIndices, :])

@@ -1,4 +1,5 @@
 import numpy as np
+import random
 
 class Chromosome:
 
@@ -22,11 +23,21 @@ class Chromosome:
     secondLevelMatrix = None
 
     def initialize(self):
-        # Updated U(-1,1) Matrices
-        self.firstLevelMatrix = np.mat(
-        np.round(2*np.random.random_sample((self.amountInputUnits+1,self.amountHiddenUnits)), 2) - 1
-                                            )
-                                            
-        self.secondLevelMatrix = np.mat(
-        np.round(2*np.random.random_sample((self.amountHiddenUnits+1,self.amountOutputUnits)), 2) - 1
-                                             )
+
+        if random.random() > 0.5:
+
+            # Updated U(-1,1) Matrices
+            self.firstLevelMatrix = np.mat(
+            np.round(2*np.random.random_sample((self.amountInputUnits+1,self.amountHiddenUnits)), 2) - 1)
+
+            self.secondLevelMatrix = np.mat(
+            np.round(2*np.random.random_sample((self.amountHiddenUnits+1,self.amountOutputUnits)), 2) - 1)
+        else:
+            # N(0,10)
+            self.firstLevelMatrix = np.mat(
+            np.round(2*np.random.normal(0.0, 10.0,(self.amountInputUnits+1,
+                                                             self.amountHiddenUnits)), 2) - 1)
+
+            self.secondLevelMatrix = np.mat(
+            np.round(2*np.random.normal(0.0, 10.0,(self.amountHiddenUnits+1,
+                                                             self.amountOutputUnits)), 2) - 1)
