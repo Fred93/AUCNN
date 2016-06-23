@@ -20,7 +20,7 @@ class GeneticNeuralNetwork():
 
     selector = Selector.RouletteSelector.RouletteSelector()
     mutator = Mutator.NormalMutator.NaiveMutator()
-    crossover = Crossover.ColumnCrossover.ColumnCrossover()
+    crossover = Crossover.RowCrossover.RowCrossover()
     regularizer = Regularization.RidgeL2.RidgeL2()
 
     #Parameters
