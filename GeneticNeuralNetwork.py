@@ -17,18 +17,18 @@ import random
 class GeneticNeuralNetwork():
 
 
-    selector = Selector.TournamentSelector.TournamentSelector()
+    selector = Selector.RouletteSelector.RouletteSelector()
     mutator = Mutator.NormalMutator.NaiveMutator()
     crossover = Crossover.ColumnCrossover.ColumnCrossover()
     regularizer = Regularization.RidgeL2.RidgeL2()
 
     #Parameters
     amountGenerations = 200
-    populationSize = 200
+    populationSize = 50
 
     mutationRate = 0.05
     mutationRange = (-0.1, 0.1)
-    crossoverRate = 0.05
+    crossoverRate = 0.01
 
     weightDecay = 1e-5
 
@@ -77,18 +77,17 @@ class GeneticNeuralNetwork():
         return mutatedPopulation
 
     def testNeuralNetwork(self, chromosome, X, y):
+        chromosome = chromosome[0]
         fnn = FeedforwardNetwork.FeedforwardNetwork(chromosome)
         output = fnn.calculateOutput(X)
         target = TargetFunction.TargetFunction()
         regularizationTerm = self.regularizer.regularize(chromosome)
         auc = target.getAUC(output, y, regularizationTerm, self.weightDecay)
-        return auc
+        return np.array([auc])
 
     def calculateFitnessVector(self, population, X, y):
-        vec = np.array([])
-        for chromosome in population:
-            vec = np.append(vec, self.testNeuralNetwork(chromosome, X, y))
-        return  vec
+        fitness = np.apply_along_axis(self.testNeuralNetwork, axis=0, arr=np.mat(population), X=X, y=y)
+        return fitness[0]
 
 if __name__ == "__main__":
     gnn = GeneticNeuralNetwork()
