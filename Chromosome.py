@@ -23,10 +23,20 @@ class Chromosome:
 
     def initialize(self):
         # Updated U(-1,1) Matrices
+        #self.firstLevelMatrix = np.mat(
+        #np.round(2*np.random.random_sample((self.amountInputUnits+1,self.amountHiddenUnits)), 2) - 1
+                                            )
+                                            
+        #self.secondLevelMatrix = np.mat(
+        #np.round(1*np.random.random_sample((self.amountHiddenUnits+1,self.amountOutputUnits)), 2) - 0.5
+                                             )
+        # N(0,10)
         self.firstLevelMatrix = np.mat(
-        np.round(2*np.random.random_sample((self.amountInputUnits+1,self.amountHiddenUnits)), 2) - 1
+        np.round(2*np.random.normal(loc=0.0, scale=10.0 (self.amountInputUnits+1,
+                                                         self.amountHiddenUnits)), 2) - 1
                                             )
                                             
         self.secondLevelMatrix = np.mat(
-        np.round(1*np.random.random_sample((self.amountHiddenUnits+1,self.amountOutputUnits)), 2) - 0.5
+        np.round(1*np.random.normal(loc=0.0, scale=10.0(self.amountHiddenUnits+1,
+                                                        self.amountOutputUnits)), 2) - 0.5
                                              )
