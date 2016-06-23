@@ -4,6 +4,7 @@ import Selector.TournamentSelector
 import Mutator.NaiveMutator
 import Crossover.NaiveCrossover
 import Crossover.ColumnCrossover
+import Crossover.PointCrossover
 import Crossover.RowCrossover
 import Mutator.NormalMutator
 import Chromosome
@@ -20,7 +21,7 @@ class GeneticNeuralNetwork():
 
     selector = Selector.RouletteSelector.RouletteSelector()
     mutator = Mutator.NormalMutator.NaiveMutator()
-    crossover = Crossover.RowCrossover.RowCrossover()
+    crossover = Crossover.PointCrossover.PointCrossover()
     regularizer = Regularization.RidgeL2.RidgeL2()
 
     #Parameters
@@ -29,7 +30,7 @@ class GeneticNeuralNetwork():
 
     mutationRate = 0.01
     mutationRange = (-0.05, 0.05)
-    crossoverRate = 0.01
+    crossoverRate = 0.1
 
     weightDecay = 0 #1e-5
 
@@ -77,7 +78,7 @@ class GeneticNeuralNetwork():
         #print("Avg Fitness after selection: " + str(np.mean(self.calculateFitnessVector(newPopulation, X, y))))
         print "\t Crossover ..."
         crossoverIndices = random.sample(range(0, population.size), int(population.size*self.crossoverRate))
-        #newPopulation[crossoverIndices] = self.crossover.crossover(newPopulation[crossoverIndices])
+        newPopulation[crossoverIndices] = self.crossover.crossover(newPopulation[crossoverIndices])
 
         print "\t Mutation ..."
         mutatedPopulation = self.mutator.mutate(newPopulation, self.mutationRate, self.mutationRange)

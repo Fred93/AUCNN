@@ -25,7 +25,6 @@ class RowCrossover(AbstractCrossover.AbstractCrossover):
         return newPopulation #after all chromosome pairs are crossovered, the function returns the newPopulation
 
     def exchangerow(self, newPopulation, i, randompoint): #function to crossover rows of chromosomes
-
         CrossoverIndices = random.sample(range(0, newPopulation[i].firstLevelMatrix.shape[0]), randompoint) #sample mit Anzahl, randompoint, von einer randomanzahl an columns
 
         #crossover for first level matrix (input to hidden layer)
