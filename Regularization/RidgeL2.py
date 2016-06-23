@@ -1,16 +1,17 @@
 import random
+import AbstractRegularization
 
 rand = random.Random()
 rand.seed(None)
 
 import numpy as np
 
-class RidgeRegulatization():
+class RidgeL2(AbstractRegularization.AbstractRegularization):
 
     def __init__(self):
         pass
 
-    def ridgeReg(self,chromosome):
+    def regularize(self,chromosome):
 
         nrows = chromosome.firstLevelMatrix.shape[0] #bekomme die Anzahl an Reihen
         mcolum = chromosome.firstLevelMatrix.shape[1] #bekomme die Anzahl der Columns
@@ -27,6 +28,6 @@ class RidgeRegulatization():
         #vektortwo = np.reshape(vektorone,(vektorone.shape[1],1)) #shape den zweiten verktor mit der anzahl an columns in den reihen
         vektortwo = np.transpose(vektorone)
         squaredSum = (np.mat(vektorone) * np.mat(vektortwo)).item()
-        regterm = np.power(squaredSum,(1/2)) #ziehe die Wurzel von dem auf summierten Betas
+        regterm = np.sqrt(squaredSum) #ziehe die Wurzel von dem auf summierten Betas
 
         return(regterm)

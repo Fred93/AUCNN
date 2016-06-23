@@ -7,6 +7,7 @@ import Crossover.NaiveCrossover
 import Crossover.ColumnCrossover
 import Mutator.NormalMutator
 import Chromosome
+import Regularization.RidgeL2
 import TargetFunction
 import FeedforwardNetwork
 import numpy as np
@@ -16,17 +17,20 @@ import random
 class GeneticNeuralNetwork():
 
 
-    selector = Selector.RouletteSelector.RouletteSelector()
+    selector = Selector.TournamentSelector.TournamentSelector()
     mutator = Mutator.NormalMutator.NaiveMutator()
     crossover = Crossover.ColumnCrossover.ColumnCrossover()
+    regularizer = Regularization.RidgeL2.RidgeL2()
 
     #Parameters
     amountGenerations = 500
-    populationSize = 16
+    populationSize = 100
 
-    mutationRate = 0.01
-    mutationRange = (-0.2, 0.2)
-    crossoverRate = 0.25
+    mutationRate = 0.05
+    mutationRange = (-0.1, 0.1)
+    crossoverRate = 0.0
+
+    weightDecay = 1e-5
 
     def solve(self):
         path = "C:/Users/D059348/PycharmProjects/AUCNN/Data/training.csv"
@@ -42,7 +46,7 @@ class GeneticNeuralNetwork():
         print "initialize population ... "
         population = np.array([])
         for i in range(self.populationSize):
-            chromosome = Chromosome.Chromosome(inputUnits, 50, 1)
+            chromosome = Chromosome.Chromosome(inputUnits, 200, 1)
             chromosome.initialize()
             population = np.append(population, chromosome)
         return population
@@ -56,9 +60,12 @@ class GeneticNeuralNetwork():
 
     def processPopulation(self, population, X, y):
         fitness = self.calculateFitnessVector(population, X, y)
+        #print("\t Fittest Chromosome: " + str(np.max(fitness)))
         #fitness = np.array((0.5,0.7,0.1,0.3,0.9,0.8,0.5,0.7,0.1,0.3,0.9,0.8,0.1,0.4,0.5,0.2))
         print "\t Selection ..."
+        print("Avg Fitness before selection: " + str(np.mean(fitness)))
         newPopulation = self.selector.select(population, fitness)
+        print("Avg Fitness after selection: " + str(np.mean(self.calculateFitnessVector(newPopulation, X, y))))
         print "\t Crossover ..."
         crossoverIndices = random.sample(range(0, population.size), int(population.size*self.crossoverRate))
         newPopulation[crossoverIndices] = self.crossover.crossover(newPopulation[crossoverIndices])
@@ -73,7 +80,8 @@ class GeneticNeuralNetwork():
         fnn = FeedforwardNetwork.FeedforwardNetwork(chromosome)
         output = fnn.calculateOutput(X)
         target = TargetFunction.TargetFunction()
-        auc = target.getAUC(output, y)
+        regularizationTerm = self.regularizer.regularize(chromosome)
+        auc = target.getAUC(output, y, regularizationTerm, self.weightDecay)
         return auc
 
     def calculateFitnessVector(self, population, X, y):
