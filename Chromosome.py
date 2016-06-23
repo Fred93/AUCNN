@@ -21,14 +21,12 @@ class Chromosome:
     firstLevelMatrix = None
     secondLevelMatrix = None
 
-    #take care of bias units!!!
     def initialize(self):
-        # Updated U(0,1) Matrices
+        # Updated U(-1,1) Matrices
         self.firstLevelMatrix = np.mat(
-        np.round(1*np.random.random_sample((self.amountInputUnits+1,self.amountHiddenUnits)),2)
+        np.round(2*np.random.random_sample((self.amountInputUnits+1,self.amountHiddenUnits)), 2) - 1
                                             )
                                             
         self.secondLevelMatrix = np.mat(
-        np.round(1*np.random.random_sample((self.amountHiddenUnits+1,self.amountOutputUnits)),2)
+        np.round(1*np.random.random_sample((self.amountHiddenUnits+1,self.amountOutputUnits)), 2) - 0.5
                                              )
-        

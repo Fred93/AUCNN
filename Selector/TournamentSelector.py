@@ -27,7 +27,7 @@ class TournamentSelector(AbstractSelector.AbstractSelector):
          new_population_idx = np.array([])
          # if elitism strategy is used call eltitsm() and reduce number of iteration accodingly
          if perform_elitism is True:
-             new_population_idx = elitism(population, fitness, elitism_rate) # Bug
+             new_population_idx = self.elitism(population, fitness, elitism_rate) # Bug
              num -= int(len(fitness) * elitism_rate)
 
          # Select indices of solutions in the population using tournament selection
