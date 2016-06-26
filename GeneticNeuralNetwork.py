@@ -22,7 +22,7 @@ import timeit
 
 class GeneticNeuralNetwork():
 
-    dir = "gitdata/AUCNN"
+    dir = "/gitdata/AUCNN"
 
     selector = Selector.RouletteSelector.RouletteSelector()
     mutator = Mutator.NormalMutator.NaiveMutator()
