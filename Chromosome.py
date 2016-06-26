@@ -33,11 +33,11 @@ class Chromosome:
             self.secondLevelMatrix = np.mat(
             np.round(2*np.random.random_sample((self.amountHiddenUnits+1,self.amountOutputUnits)), 2) - 1)
         else:
-            # N(0,10)
+            # N(0,1)
             self.firstLevelMatrix = np.mat(
-            np.round(2*np.random.normal(0.0, 10.0,(self.amountInputUnits+1,
-                                                             self.amountHiddenUnits)), 2) - 1)
+            np.round(np.random.normal(0.0, 1.0,(self.amountInputUnits+1,
+                                                             self.amountHiddenUnits)), 2))
 
             self.secondLevelMatrix = np.mat(
-            np.round(2*np.random.normal(0.0, 10.0,(self.amountHiddenUnits+1,
-                                                             self.amountOutputUnits)), 2) - 1)
+            np.round(np.random.normal(0.0, 1.0,(self.amountHiddenUnits+1,
+                                                             self.amountOutputUnits)), 2))

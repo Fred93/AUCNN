@@ -13,12 +13,12 @@ class RouletteSelector(AbstractSelector.AbstractSelector):
     
 
     def select(self, population, fitness, perform_elitism = False, elitism_rate = 0.1):
-        #theta = 0.1
+        theta = 0.01
         # compute total fitness
         total_fitness = float(sum(fitness))
         # compute relative fitness value
-        #rel_fitness = [(f+theta)/(total_fitness+theta*len(fitness)) for f in fitness]
-        rel_fitness = [(f)/(total_fitness) for f in fitness]
+        rel_fitness = [(f+theta)/(total_fitness+theta*len(fitness)) for f in fitness]
+        #rel_fitness = [(f)/(total_fitness) for f in fitness]
         # Generate probability intervals for each individual
         probs = [sum(rel_fitness[:i+1]) for i in range(len(rel_fitness))]
     
