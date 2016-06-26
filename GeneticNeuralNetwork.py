@@ -24,12 +24,12 @@ class GeneticNeuralNetwork():
 
     selector = Selector.RouletteSelector.RouletteSelector()
     mutator = Mutator.NormalMutator.NaiveMutator()
-    crossover = Crossover.PointCrossover.PointCrossover()
+    crossover = Crossover.RowCrossover.RowCrossover()
     regularizer = Regularization.RidgeL2.RidgeL2()
 
     #Parameters
-    amountGenerations = 500
-    populationSize = 300
+    amountGenerations = 5
+    populationSize = 100
 
     mutationRate = 0.05
     mutationRange = (-0.05, 0.05)
@@ -41,7 +41,7 @@ class GeneticNeuralNetwork():
     bestSolutions = np.array([])
 
     def solve(self):
-        path = "/gitdata/training.csv"
+        path = "/Users/maximilianandres/Downloads/training.csv"
         data = pd.read_csv(path)
         y = data['returnBin']
         X = data.drop(['returnBin', 'Unnamed: 0'], axis=1)
@@ -61,8 +61,8 @@ class GeneticNeuralNetwork():
         self.trainNeuralNetwork(X,y)
         #Plotter.plotLearningCurve(self.bestSolutions, self.avgSolutions)
 
-        pickle.dump(self.bestSolutions, open("/gitdata/bestSolutions.pickle","wb"), protocol=2)
-        pickle.dump(self.avgSolutions, open("/gitdata/avgSolutions.pickle","wb"), protocol=2)
+        pickle.dump(self.bestSolutions, open("/Users/maximilianandres/Google Drive/Humboldt/2. Semester/Applied Predictive Modelling/bestSolutions.pickle","wb"), protocol=2)
+        pickle.dump(self.avgSolutions, open("/Users/maximilianandres/Google Drive/Humboldt/2. Semester/Applied Predictive Modelling/avgSolutions.pickle","wb"), protocol=2)
 
     def initializePopulation(self, inputUnits):
         print "initialize population ... "

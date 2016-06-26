@@ -18,7 +18,7 @@ e = [a, b]
 f = [c, d]
 x = [y, z]
 
-l = [e, f, z]
+l = []
 
 
 def exchangerow(l, i, randompoint):
@@ -37,6 +37,9 @@ def exchangerow(l, i, randompoint):
 
 
 i = 0
+
+print(len(l))
+
 while i < (len(l) - 1):  # -1 um bei ungeraden row matrizen die letzte Einheit stehen zu lassen
 
     randompoint = rand.randint(0, l[i][0].shape[0])

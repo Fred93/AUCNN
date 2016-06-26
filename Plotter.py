@@ -9,3 +9,4 @@ def plotLearningCurve(bestSolutions, avgSolutions):
     df['AvgSolutions'] = avgSolutions
     plot = ggplot(aes(x = 'Generation'), data=df) + geom_line(aes(y='BestSolutions', colour="red")) + geom_line(aes(y='AvgSolutions', colour="blue")) + ggtitle('Learning Curve')
     print plot
+
