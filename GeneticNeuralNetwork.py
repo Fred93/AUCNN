@@ -30,8 +30,8 @@ class GeneticNeuralNetwork():
     regularizer = Regularization.RidgeL2.RidgeL2()
 
     #Parameters
-    amountGenerations = 5 #50
-    populationSize = 10 #100
+    amountGenerations = 50 #50
+    populationSize = 100 #100
 
 
     mutationRate = 0.08
@@ -58,7 +58,7 @@ class GeneticNeuralNetwork():
         np.random.shuffle(shuffle)
         X = X.values[shuffle]
         y = y[shuffle]
-        subset = 1000   #40000
+        subset = 40000   #40000
         X = X[0:subset]
         y = np.array(y[0:subset])
 
