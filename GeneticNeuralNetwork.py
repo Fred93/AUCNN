@@ -22,16 +22,17 @@ import timeit
 
 class GeneticNeuralNetwork():
 
-    dir = "/gitdata/AUCNN"
+    dir = "gitdata  /AUCNN"
 
     selector = Selector.RouletteSelector.RouletteSelector()
     mutator = Mutator.NormalMutator.NaiveMutator()
-    crossover = Crossover.PointCrossover.PointCrossover()
+    crossover = Crossover.RowCrossover.RowCrossover()
     regularizer = Regularization.RidgeL2.RidgeL2()
 
     #Parameters
     amountGenerations = 5 #50
     populationSize = 10 #100
+
 
     mutationRate = 0.08
     mutationRange = (-0.1, 0.1)
@@ -103,6 +104,7 @@ class GeneticNeuralNetwork():
         for s in splits:
             mergedArray = np.append(mergedArray, s)
         return  np.apply_along_axis(int, 0, np.mat((mergedArray)))
+
 
     def initializePopulation(self, inputUnits):
         print "initialize population ... "
