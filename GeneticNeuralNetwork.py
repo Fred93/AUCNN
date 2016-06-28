@@ -28,7 +28,7 @@ class GeneticNeuralNetwork():
 
     #Selection of implemented genetic operators
     selector = Selector.RouletteSelector.RouletteSelector()
-    mutator = Mutator.NormalMutator.NaiveMutator()
+    mutator = Mutator.NormalMutator.NormalMutator()
     crossover = Crossover.RowCrossover.RowCrossover()
     regularizer = Regularization.RidgeL2.RidgeL2()
 
