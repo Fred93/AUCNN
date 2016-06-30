@@ -10,7 +10,6 @@ import Mutator.NormalMutator
 import Chromosome
 import Regularization.RidgeL2
 import TargetFunction
-import FeedforwardNetwork
 import numpy as np
 import pandas as pd
 import random
@@ -29,7 +28,7 @@ class GeneticNeuralNetwork():
 
     #Selection of implemented genetic operators
     selector = Selector.RouletteSelector.RouletteSelector()
-    mutator = Mutator.NormalMutator.NaiveMutator()
+    mutator = Mutator.NormalMutator.NormalMutator()
     crossover = Crossover.RowCrossover.RowCrossover()
     regularizer = Regularization.RidgeL2.RidgeL2()
 
@@ -196,8 +195,7 @@ class GeneticNeuralNetwork():
         Tests a neural network based on new (ideally unseen) data.
         '''
         chromosome = chromosome[0]
-        fnn = FeedforwardNetwork.FeedforwardNetwork(chromosome)
-        output = fnn.calculateOutput(X)
+        output = chromosome.calculateOutput(X)
         target = TargetFunction.TargetFunction()
         regularizationTerm = self.regularizer.regularize(chromosome)
         auc = target.getAUC(output, y, regularizationTerm, self.weightDecay, reg)

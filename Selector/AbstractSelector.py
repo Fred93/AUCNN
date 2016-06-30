@@ -1,11 +1,6 @@
 from abc import ABCMeta, abstractmethod
 import numpy as np
 
-"""
-Should the fitness values get computed here or in some other class?
-"""
-
-
 class AbstractSelector():
     __metaclass__ = ABCMeta
  
@@ -40,6 +35,3 @@ class AbstractSelector():
     def elitism(self, population, fitness, elitism_rate=0.1):
         n = int(len(fitness) * elitism_rate)
         return np.argpartition(fitness,-n)[-n:]
-    
- 
-        
