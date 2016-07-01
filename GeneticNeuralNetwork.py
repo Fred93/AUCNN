@@ -33,16 +33,16 @@ class GeneticNeuralNetwork():
     regularizer = Regularization.RidgeL2.RidgeL2()
 
     #Parameters
-    amountGenerations = 50 #50
+    amountGenerations = 500 #50
     populationSize = 150 #100
 
     mutationRate = 0.08
     mutationRange = (-0.1, 0.1)
     crossoverRate = 0.05
 
-    mutationRateOptions = (0.01, 0.1)
-    crossoverRateOptions = (0.01, 0.1)
-    mutationRangeOptions = ((-0.05, 0.05), (-0.5, 0.5))
+    mutationRateOptions = [0.01]
+    crossoverRateOptions = [0.01]
+    mutationRangeOptions = [(-0.5, 0.5)]
 
     weightDecay = 1e-5
 
@@ -66,7 +66,7 @@ class GeneticNeuralNetwork():
         np.random.shuffle(shuffle)
         X = X.values[shuffle]
         y = y[shuffle]
-        subset = 50000   #40000
+        subset = 100000   #40000
         X = X[0:subset]
         y = np.array(y[0:subset])
 
@@ -144,6 +144,12 @@ class GeneticNeuralNetwork():
         for i in range(self.amountGenerations):
             print "Process Generation #" + str(i)
             population, fitness = self.processPopulation(population, X, y, fitness)
+
+            if i%10 == 0:
+                filename = "result_" + str(i) + ".pickle"
+                pickle.dump(self.avgSolutions, open(self.dir + "/result/avgSolution_" + filename,"wb"), protocol=2)
+                pickle.dump(self.bestSolutions, open(self.dir + "/result/bestSolution_" + filename,"wb"), protocol=2)
+
         return population[np.argmax(fitness)]
 
     def processPopulation(self, population, X, y, previousFitness):
@@ -161,8 +167,9 @@ class GeneticNeuralNetwork():
 
         print "\t Selection ..."
         previousPopulation = population
-        newPopulation = self.selector.select(population, fitness, perform_elitism=True)
+        #newPopulation = self.selector.select(population, fitness, perform_elitism=True)
 
+        newPopulation = np.copy(population)
         print "\t Crossover ..."
         crossoverIndices = random.sample(range(0, population.size), int(population.size*self.crossoverRate))
         newPopulation[crossoverIndices] = self.crossover.crossover(newPopulation[crossoverIndices])
