@@ -4,6 +4,9 @@ import numpy as np
 
 class ColumnCrossover(AbstractCrossover.AbstractCrossover):
 
+
+    #COLUMN_CROSSOVER
+
     rand = random.Random()
     rand.seed(None)
 
@@ -17,17 +20,22 @@ class ColumnCrossover(AbstractCrossover.AbstractCrossover):
 
         while i < (len(newPopulation) - 1):   #-1 to take care of the last cromosome of a uneven population
 
-            randompoint = self.rand.randint(0, newPopulation[i].firstLevelMatrix.shape[1])  # creates for each pair of chromosomes a new random number, also be possible to be 0
+            randompoint = self.rand.randint(0, newPopulation[i].firstLevelMatrix.shape[1])
             randompointscond = self.rand.randint(0, newPopulation[i].secondLevelMatrix.shape[1])
+            # creates for each pair of chromosomes a new random number, also be possible to be 0
 
-            self.exchangecolum(newPopulation, i, randompoint, randompointscond)  # calls exchangerow function to crossover the first level matrix and second level matrix of a cromosome pair
+            self.exchangecolum(newPopulation, i, randompoint, randompointscond)
+            # calls exchangerow function to crossover the first level matrix and second level matrix of a cromosome pair
 
-            i = i + 2  # jumps to the next pair
+            i = i + 2
+            # jumps to the next pair
 
-        return newPopulation  # after all chromosome pairs are crossovered, the function returns the newPopulation
+        return newPopulation
+        # after all chromosome pairs are crossovered, the function returns the newPopulation
 
 
-    def exchangecolum(self, newPopulation, i, randompoint, randompointsecond): #function to crossover colums of chromosomes
+    def exchangecolum(self, newPopulation, i, randompoint, randompointsecond):
+        #function to crossover colums of chromosomes
 
         CrossoverIndices = random.sample(range(0, newPopulation[i].firstLevelMatrix.shape[1]), randompoint)
         CrossoverIndices2 = random.sample(range(0, newPopulation[i].secondLevelMatrix.shape[1]), randompointsecond)
